@@ -4,7 +4,7 @@ resources:
     Kyoki_OAuth2_TokenEndpoint: 'method(Kyoki\OAuth2\Controller\TokenController->.*Action())'
 roles:
 # OAuth role to be able to use authorization and token endpoint
-  OAuth:
+  OAuth: []
 # Example roles
 #  myscope: [myresources]
 #  Editor: [OAuth,myscope]

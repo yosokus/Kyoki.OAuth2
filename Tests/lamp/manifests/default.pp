@@ -3,17 +3,17 @@ Exec {
 }
 stage { "pre": before => Stage["main"] }
 
-$flow3VersionTag = 'FLOW3-1.1.0-beta3'
+$flowVersionTag = 'Flow-1.1.0-beta3'
 $mysqlpw = "toor"
-$flow3db_name = "flow3db"
-$flow3db_passwd = "flow3passwd"
-$flow3db_username = "flow3user"
+$flowdb_name = "flowdb"
+$flowdb_passwd = "flowpasswd"
+$flowdb_username = "flowuser"
 
 include bootstrap
 include other
 include apache
 include php
 include mysql
-include flow3
+include flow
 include oauth
 include demoapp

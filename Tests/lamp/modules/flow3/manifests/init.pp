@@ -1,51 +1,51 @@
-class flow3 {
-	exec {'flow3-dbupdate':
-    		path => ['/usr/bin/','/bin/','/var/www/FLOW3'],
-    		command => 'flow3 doctrine:update',
-    		cwd => '/var/www/FLOW3',
-    		require => Exec['flow3-checkout']
+class flow {
+	exec {'flow-dbupdate':
+    		path => ['/usr/bin/','/bin/','/var/www/Flow'],
+    		command => 'flow doctrine:update',
+    		cwd => '/var/www/Flow',
+    		require => Exec['flow-checkout']
 
     	}
 
-	exec {'flow3-clone':
-		command => '/usr/bin/git clone git://git.typo3.org/FLOW3/Distributions/Base.git /var/www/FLOW3 --recursive',
-		creates => '/var/www/FLOW3',
+	exec {'flow-clone':
+		command => '/usr/bin/git clone git://git.typo3.org/Flow/Distributions/Base.git /var/www/Flow --recursive',
+		creates => '/var/www/Flow',
 		require => Package['git-core']
 	}
 	
-	exec {'flow3-update':
-		cwd => '/var/www/FLOW3',
+	exec {'flow-update':
+		cwd => '/var/www/Flow',
 		command => '/usr/bin/git submodule foreach "git pull origin master"',
-		onlyif => 'ls -l /var/www/FLOW3/.git'
+		onlyif => 'ls -l /var/www/Flow/.git'
 	}
 	
-	exec {'flow3-checkout':
-		cwd => '/var/www/FLOW3',
-		command => '/usr/bin/git checkout $flow3VersionTag ',
-		require => Exec['flow3-clone']
+	exec {'flow-checkout':
+		cwd => '/var/www/Flow',
+		command => '/usr/bin/git checkout $flowVersionTag ',
+		require => Exec['flow-clone']
 	}
 	
-	exec {'flow3-permissions':
-		command => 'chown www-data:www-data -R /var/www/FLOW3',
-		require => Exec['flow3-checkout']
+	exec {'flow-permissions':
+		command => 'chown www-data:www-data -R /var/www/Flow',
+		require => Exec['flow-checkout']
 	
 	}
 
-	file {'/var/www/FLOW3/Packages/Applications':
+	file {'/var/www/Flow/Packages/Applications':
 		ensure => directory,
-		require => Exec['flow3-clone']
+		require => Exec['flow-clone']
 	}
 	
-	exec {'flow3-cacheflush':
-		path => ['/usr/bin/','/bin/','/var/www/FLOW3'],
-		command => 'flow3 flow3:cache:flush',
-		cwd => '/var/www/FLOW3',
-		require => Exec['flow3-checkout']
+	exec {'flow-cacheflush':
+		path => ['/usr/bin/','/bin/','/var/www/Flow'],
+		command => 'flow flow:cache:flush',
+		cwd => '/var/www/Flow',
+		require => Exec['flow-checkout']
 		
 	}
 
-	mysqldb { $flow3db_name:
-    		user => $flow3db_username,
-    		password => $flow3db_passwd
+	mysqldb { $flowdb_name:
+    		user => $flowdb_username,
+    		password => $flowdb_passwd
     	}
 }

@@ -1,0 +1,13 @@
+{
+    "name": "rps/oauth2",
+    "type": "library",
+    "description": "TYPO3 Flow OAuth2 authentication package.",
+    "require": {
+        "typo3/flow": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Kyoki\\OAuth2": "Classes"
+        }
+    }
+}

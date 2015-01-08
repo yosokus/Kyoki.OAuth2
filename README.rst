@@ -1,29 +1,31 @@
 ===============================================
-OAuth2 provider for the FLOW3 framework
+OAuth2 provider for the Flow framework
 ===============================================
 
-This is a FLOW3 package that provides a OAuth 2 provider, you could use it for example to enable access
-to your FLOW3 Application APIs by third party clients (i.e. Mobile clients) without tell username/password to the app
+This is a fork of the `Kyoki.OAuth2 <https://github.com/farconada/Kyoki.OAuth2>`_ package.
+
+This is a Flow package that provides a OAuth 2 provider, you could use it for example to enable access
+to your Flow Application APIs by third party clients (i.e. Mobile clients) without tell username/password to the app
 
 `OAuth2 Reference <http://oauth.net/2/>`_
 
 SetUp step by step
 ---------------------------
 
-1. Install the Kyoki.OAuth2 package in FLOW3
-    Copy tne package inside FLOW3/Packages/Applications::
+1. Install the Kyoki.OAuth2 package in Flow
+    Copy tne package inside Flow/Packages/Applications::
 
-	    cd /var/www/FLOW3/Packages/Applications
+	    cd /var/www/Flow/Packages/Applications
 	    git clone git://github.com/farconada/Kyoki.OAuth2.git
-	    cd /var/www/FLOW3
-   	    ./flow3 doctrine:update
+	    cd /var/www/Flow
+   	    ./flow doctrine:update
 
 
-2. SetUp you FLOW3 config file configurations/Settings.yaml
+2. SetUp you Flow config file configurations/Settings.yaml
 	::
 
 		TYPO3:
-		  FLOW3:
+		  Flow:
 		    security:
 		       enable: TRUE
 		       authentication:
@@ -61,8 +63,8 @@ SetUp step by step
 		
 				try {
 					$this->authenticationManager->authenticate();
-				} catch (\TYPO3\FLOW3\Security\Exception\AuthenticationRequiredException $exception) {
-					$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message('Wrong username or password.'));
+				} catch (\TYPO3\Flow\Security\Exception\AuthenticationRequiredException $exception) {
+					$this->flashMessageContainer->addMessage(new \TYPO3\Flow\Error\Message('Wrong username or password.'));
 					$this->redirect('login');
 				}
 				if ($interceptedRequest = $this->securityContext->getInterceptedRequest()) {
@@ -106,7 +108,7 @@ Notes
 ----------
 
 * There is a Acme.Demoapp package inside the directory Tests/lamp/
-* You can deploy a new virtualbox with vagrant with a fully FLOW3 installation with OAuth configured
+* You can deploy a new virtualbox with vagrant with a fully Flow installation with OAuth configured
 * There is an exmple OAuth client/consumer in inside the directory Tests/lamp/client
 
 

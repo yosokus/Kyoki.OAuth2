@@ -8,13 +8,13 @@
 # possible configuration options.                                        #
 #                                                                        #
 TYPO3:
-  FLOW3:
+  Flow:
     persistence:
      backendOptions:
       driver: 'pdo_mysql'
-      dbname: '<%= @flow3db_name %>' # adjust to your database name
-      user: '<%= @flow3db_username %>'         # adjust to your database user
-      password: '<%= @flow3db_passwd %>'         # adjust to your database password
+      dbname: '<%= @flowdb_name %>' # adjust to your database name
+      user: '<%= @flowdb_username %>'         # adjust to your database user
+      password: '<%= @flowdb_passwd %>'         # adjust to your database password
       host: 'localhost'    # adjust to your database host
       doctrine:
         cacheImplementation: 'Doctrine\Common\Cache\ApcCache'

@@ -2,10 +2,10 @@ Listen 8080
 NameVirtualhost *:80
 <VirtualHost *:80>
 	ServerName app.local
-	DocumentRoot /var/www/FLOW3/Web/
-	SetEnv FLOW3_CONTEXT Development
-	#SetEnv FLOW3_CONTEXT Production
-    <Directory "/var/www/FLOW3/Web/">
+	DocumentRoot /var/www/Flow/Web/
+	SetEnv FLOW_CONTEXT Development
+	#SetEnv FLOW_CONTEXT Production
+    <Directory "/var/www/Flow/Web/">
             Options Indexes ExecCGI FollowSymLinks -MultiViews
             Order allow,deny
             Allow from all
@@ -16,10 +16,10 @@ NameVirtualhost *:80
 
 <VirtualHost *:8080>
 	ServerName app.local
-	DocumentRoot /var/www/FLOW3/Web/
-	SetEnv FLOW3_CONTEXT Development
-	#SetEnv FLOW3_CONTEXT Production
-    <Directory "/var/www/FLOW3/Web/">
+	DocumentRoot /var/www/Flow/Web/
+	SetEnv FLOW_CONTEXT Development
+	#SetEnv FLOW_CONTEXT Production
+    <Directory "/var/www/Flow/Web/">
             Options Indexes ExecCGI FollowSymLinks -MultiViews
             Order allow,deny
             Allow from all
